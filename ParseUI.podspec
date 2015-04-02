@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors          = 'Parse'
   s.social_media_url = 'https://twitter.com/ParseIt'
 
-  s.source           = { :git => "https://github.com/ParsePlatform/ParseUI-iOS.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/gcbinsp/ParseUI-iOS.git", :tag => s.version.to_s }
   
   s.platform              = :ios
   s.requires_arc          = true
@@ -34,5 +34,5 @@ Pod::Spec.new do |s|
                           'CoreGraphics',
                           'QuartzCore'
 
-  s.dependency 'Parse', '~> 1.7'
+  #s.dependency 'Parse', '~> 1.7'
 end
