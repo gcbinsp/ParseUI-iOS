@@ -23,7 +23,7 @@
 
 #import <Bolts/BFTaskCompletionSource.h>
 
-#import <Parse/PFFile.h>
+//#import <Parse/PFFile.h>
 
 #import "PFImageCache.h"
 
@@ -78,7 +78,7 @@
     if (!self.file.url) {
         // The file has not been saved.
         if (completion) {
-            NSError *error = [NSError errorWithDomain:PFParseErrorDomain code:kPFErrorUnsavedFile userInfo:nil];
+            NSError *error = [NSError errorWithDomain:@"Parse UI" code:kPFErrorUnsavedFile userInfo:nil];
             completion(nil, error);
         }
         return;
@@ -117,7 +117,7 @@
             UIImage *image = [UIImage imageWithData:data];
             if (!image) {
                 if (completion) {
-                    NSError *invalidDataError = [NSError errorWithDomain:PFParseErrorDomain
+                    NSError *invalidDataError = [NSError errorWithDomain:@"Parse UI"
                                                                     code:kPFErrorInvalidImageData
                                                                 userInfo:nil];
                     dispatch_async(dispatch_get_main_queue(), ^{

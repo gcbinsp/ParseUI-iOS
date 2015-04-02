@@ -22,12 +22,13 @@
 #import <UIKit/UIKit.h>
 
 #import <ParseUI/ParseUIConstants.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 PFUI_ASSUME_NONNULL_BEGIN
 
 @class PFCollectionViewCell;
-@class PFObject;
-@class PFQuery;
+//@class PFObject;
+//@class PFQuery;
 
 /*!
  This class allows you to think about a one-to-one mapping between a <PFObject> and a `UICollectionViewCell`,

@@ -22,11 +22,12 @@
 #import <UIKit/UIKit.h>
 
 #import <ParseUI/ParseUIConstants.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 PFUI_ASSUME_NONNULL_BEGIN
 
-@class PFObject;
-@class PFQuery;
+//@class PFObject;
+//@class PFQuery;
 @class PFTableViewCell;
 
 /*!

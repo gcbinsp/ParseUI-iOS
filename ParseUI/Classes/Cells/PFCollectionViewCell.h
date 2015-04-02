@@ -22,11 +22,12 @@
 #import <UIKit/UIKit.h>
 
 #import <ParseUI/ParseUIConstants.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 PFUI_ASSUME_NONNULL_BEGIN
 
 @class PFImageView;
-@class PFObject;
+//@class PFObject;
 
 /*!
  The `PFCollectionViewCell` class represents a collection view cell which can

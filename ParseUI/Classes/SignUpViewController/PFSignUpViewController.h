@@ -23,8 +23,9 @@
 
 #import <ParseUI/ParseUIConstants.h>
 #import <ParseUI/PFSignUpView.h>
+#import <AVOSCloud/AVOSCloud.h>
 
-@class PFUser;
+//@class PFUser;
 @protocol PFSignUpViewControllerDelegate;
 
 PFUI_ASSUME_NONNULL_BEGIN

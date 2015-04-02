@@ -21,7 +21,7 @@
 
 #import "PFLogInViewController.h"
 
-#import <Parse/PFTwitterUtils.h>
+//#import <Parse/PFTwitterUtils.h>
 
 #import "PFActionButton.h"
 #import "PFAlertView.h"
@@ -355,7 +355,7 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     }
     self.loading = YES;
 
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+    /*[PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
         self.loading = NO;
         if ([_logInView.facebookButton isKindOfClass:[PFActionButton class]]) {
             [(PFActionButton *)_logInView.twitterButton setLoading:NO];
@@ -368,7 +368,13 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
         } else {
             // User cancelled login.
         }
-    }];
+    }];*/
+    //Dummy code
+    self.loading = NO;
+    if ([_logInView.facebookButton isKindOfClass:[PFActionButton class]]) {
+        [(PFActionButton *)_logInView.twitterButton setLoading:NO];
+    }
+    [self _loginDidFailWithError:[[NSError alloc] init]];
 }
 
 #pragma mark Log In

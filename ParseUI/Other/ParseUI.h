@@ -23,8 +23,8 @@
 #import <ParseUI/PFImageView.h>
 #import <ParseUI/PFLogInView.h>
 #import <ParseUI/PFLogInViewController.h>
-#import <ParseUI/PFProductTableViewController.h>
-#import <ParseUI/PFPurchaseTableViewCell.h>
+//#import <ParseUI/PFProductTableViewController.h>
+//#import <ParseUI/PFPurchaseTableViewCell.h>
 #import <ParseUI/PFQueryCollectionViewController.h>
 #import <ParseUI/PFQueryTableViewController.h>
 #import <ParseUI/PFSignUpView.h>

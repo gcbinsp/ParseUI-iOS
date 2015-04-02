@@ -21,7 +21,8 @@
 
 #import "PFQueryTableViewController.h"
 
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 #import "PFActivityIndicatorTableViewCell.h"
 #import "PFImageView.h"
@@ -155,17 +156,17 @@
     [self _refreshLoadingView];
 }
 
-- (PFQuery *)queryForTable {
+- (AVQuery *)queryForTable {
     if (!self.parseClassName) {
         [NSException raise:NSInternalInconsistencyException
                     format:@"You need to specify a parseClassName for the PFQueryTableViewController.", nil];
     }
 
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    AVQuery *query = [AVQuery queryWithClassName:self.parseClassName];
 
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
-    if ([self.objects count] == 0 && ![Parse isLocalDatastoreEnabled]) {
+    if ([self.objects count] == 0){//Comment for avosCloud. && ![Parse isLocalDatastoreEnabled]) {
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
 
@@ -175,7 +176,7 @@
 }
 
 // Alters a query to add functionality like pagination
-- (void)_alterQuery:(PFQuery *)query forLoadingPage:(NSInteger)page {
+- (void)_alterQuery:(AVQuery *)query forLoadingPage:(NSInteger)page {
     if (self.paginationEnabled && self.objectsPerPage) {
         query.limit = self.objectsPerPage;
         query.skip = page * self.objectsPerPage;
@@ -196,10 +197,10 @@
     self.loading = YES;
     [self objectsWillLoad];
 
-    PFQuery *query = [self queryForTable];
+    AVQuery *query = [self queryForTable];
     [self _alterQuery:query forLoadingPage:page];
     [query findObjectsInBackgroundWithBlock:^(NSArray *foundObjects, NSError *error) {
-        if (![Parse isLocalDatastoreEnabled] &&
+        if (//Comment for avosCloud. ![Parse isLocalDatastoreEnabled] &&
             query.cachePolicy != kPFCachePolicyCacheOnly &&
             error.code == kPFErrorCacheMiss) {
             // no-op on cache miss

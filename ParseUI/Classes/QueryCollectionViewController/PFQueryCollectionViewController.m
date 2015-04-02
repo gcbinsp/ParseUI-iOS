@@ -21,7 +21,7 @@
 
 #import "PFQueryCollectionViewController.h"
 
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 #import "PFActivityIndicatorCollectionReusableView.h"
 #import "PFCollectionViewCell.h"
@@ -178,7 +178,7 @@ static NSString *const PFQueryCollectionViewNextPageReusableViewIdentifier = @"n
     PFQuery *query = [self queryForCollection];
     [self _alterQuery:query forLoadingPage:page];
     [query findObjectsInBackgroundWithBlock:^(NSArray *foundObjects, NSError *error) {
-        if (![Parse isLocalDatastoreEnabled] &&
+        if (// comment it for avos cloud. ![Parse isLocalDatastoreEnabled] &&
             query.cachePolicy != kPFCachePolicyCacheOnly &&
             error.code == kPFErrorCacheMiss) {
             // no-op on cache miss
@@ -234,7 +234,7 @@ static NSString *const PFQueryCollectionViewNextPageReusableViewIdentifier = @"n
 
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
-    if ([self.objects count] == 0 && ![Parse isLocalDatastoreEnabled]) {
+    if ([self.objects count] == 0){//Comment for avosCloud. && ![Parse isLocalDatastoreEnabled]) {
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
 

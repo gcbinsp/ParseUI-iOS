@@ -21,8 +21,8 @@
 
 #import "PFSignUpViewController.h"
 
-#import <Parse/PFConstants.h>
-#import <Parse/PFUser.h>
+//#import <Parse/PFConstants.h>
+//#import <Parse/PFUser.h>
 
 #import "PFAlertView.h"
 #import "PFLocalization.h"
@@ -270,7 +270,7 @@ static NSString *const PFSignUpViewControllerDelegateInfoAdditionalKey = @"addit
         NSString *errorMessage = NSLocalizedString(@"Password must be at least %d characters.",
                                                    @"Password too short error message in PFSignUpViewController");
         errorMessage = [NSString stringWithFormat:errorMessage, (unsigned long)_minPasswordLength];
-        NSError *error = [NSError errorWithDomain:PFParseErrorDomain
+        NSError *error = [NSError errorWithDomain:@"Parse UI"
                                              code:0
                                          userInfo:@{ NSLocalizedDescriptionKey : errorMessage }];
         [self _signUpDidFailWithError:error];
@@ -324,7 +324,7 @@ static NSString *const PFSignUpViewControllerDelegateInfoAdditionalKey = @"addit
 
     NSString *title = NSLocalizedString(@"Sign Up Error", @"Sign Up Error");
 
-    if ([[error domain] isEqualToString:PFParseErrorDomain]) {
+    if ([[error domain] isEqualToString:@"Parse UI"]) {
         NSInteger errorCode = [error code];
         NSString *message = nil;
         UIResponder *responder = nil;

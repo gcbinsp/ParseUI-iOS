@@ -22,13 +22,14 @@
 #import <UIKit/UIKit.h>
 
 #import <ParseUI/ParseUIConstants.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 PFUI_ASSUME_NONNULL_BEGIN
 
 typedef void(^PFImageViewImageResultBlock)(UIImage *PFUI_NULLABLE_S image,  NSError *PFUI_NULLABLE_S error);
 
 @class BFTask;
-@class PFFile;
+//@class PFFile; 
 
 /*!
  An image view that downloads and displays remote image stored on Parse's server.
