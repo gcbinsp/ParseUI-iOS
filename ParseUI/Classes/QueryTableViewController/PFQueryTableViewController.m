@@ -387,7 +387,11 @@
 
 // The row of the pagination cell
 - (NSIndexPath *)_indexPathForPaginationCell {
-    return [NSIndexPath indexPathForRow:[self.objects count] inSection:0];
+    //return [NSIndexPath indexPathForRow:[self.objects count] inSection:0];
+    //Fix loadmore error in the TableView of the Timeline VC.
+    //Our indexPath is 10 sections(each section has one row), not 1 section with 10 rows.
+    //TODO: find a solution for both cases.
+    return [NSIndexPath indexPathForRow:0 inSection:[self.objects count]];
 }
 
 - (void)_loadImagesForOnscreenRows {
