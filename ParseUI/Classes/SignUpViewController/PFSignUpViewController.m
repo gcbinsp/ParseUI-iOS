@@ -279,6 +279,11 @@ static NSString *const PFSignUpViewControllerDelegateInfoAdditionalKey = @"addit
         return;
     }
 
+    //Fix the bug of the ACL of the new created AVUser
+    //First, do not reset the default ACL to nil,
+    //because the setting default ACL in AppDelegate.m changes the default ACL of AVUser.
+    //Then, set the default ACL again.
+    [AVACL setDefaultACL:nil withAccessForCurrentUser:NO];
     PFUser *user = [PFUser user];
     user.username = username;
     user.password = password;
@@ -299,6 +304,14 @@ static NSString *const PFSignUpViewControllerDelegateInfoAdditionalKey = @"addit
         if ([_signUpView.signUpButton isKindOfClass:[PFPrimaryButton class]]) {
             [(PFPrimaryButton *)_signUpView.signUpButton setLoading:NO];
         }
+        //Fix the bug of the ACL of the new created AVUser
+        //First, do not reset the default ACL to nil,
+        //because the setting default ACL in AppDelegate.m changes the default ACL of AVUser.
+        //Then, set the default ACL again.
+        PFACL *defaultACL = [PFACL ACL];
+        // Enable public read access by default, with any newly created PFObjects belonging to the current user
+        [defaultACL setPublicReadAccess:YES];
+        [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
 
         if (succeeded) {
             [self _signUpDidSuceedWithUser:user];
